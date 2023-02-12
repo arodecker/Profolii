@@ -1,21 +1,43 @@
-
 @import "~swiper/css";
 @import "~swiper/css/effect-coverflow";
 @import "~swiper/css/pagination";
+
 .swiper {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
-}
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
+  .swiper-wrapper {
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      // width: 50vw;
+      width: 250px;
+      height: 250px;
+      transition: margin 1000ms ease-in-out;
+      transition: box-shadow 1000ms ease-in-out;
+
+      .slide-content{
+        transition: transform .2s;
+      }
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+    }
+
+    .swiper-slide-active {
+      // width: 350px;
+      // height: 350px;
+
+      margin-top: -25px;
+      .slide-content {
+        -ms-transform: scale(1.2); /* IE 9 */
+        -webkit-transform: scale(1.2); /* Safari 3-8 */
+        transform: scale(1.2); 
+      }
+    }
+  }
 }

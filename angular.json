@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject": "demo",
+  "defaultProject": "profolii",
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
+    "profolii": {
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -11,7 +11,6 @@
             "production": {
               "aot": true,
               "buildOptimizer": true,
-              "extractCss": true,
               "extractLicenses": true,
               "fileReplacements": [
                 {
@@ -34,11 +33,14 @@
             ],
             "index": "src/index.html",
             "main": "src/main.ts",
-            "outputPath": "dist/demo",
+            "outputPath": "dist/profoli",
             "polyfills": "src/polyfills.ts",
             "scripts": [],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/material-icons/css/material-icons.min.css",
               "src/styles.scss"
+
             ],
             "tsConfig": "src/tsconfig.app.json"
           }
@@ -47,11 +49,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "demo:build:production"
+              "browserTarget": "profolii:build:production"
             }
           },
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "profolii:build"
           }
         }
       },
