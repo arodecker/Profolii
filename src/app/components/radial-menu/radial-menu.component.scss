@@ -165,63 +165,45 @@ input#toggle.expanded ~ #show-menu {
 }
 
 @keyframes slideinTab {
-  0%   {left: -0vw;}
-  10% {left: -10vw; }
-  20% {left: -20vw; }
-  30% {left: -30vw; }
-  40% {left: -40vw; }
-  50% {left: -50vw;}
-  60% {left: -60vw; }
-  70% {left: -70vw; }
-  80% {left: -80vw; }
-  90% {left: -90vw; }
-  100% {left: -100vw; }
-}
-@keyframes slideoutTab {
-  0%   {left: -100vw;}
-  10% {left: -90vw; }
-  20% {left: -80vw; }
-  30% {left: -70vw; }
-  40% {left: -60vw; }
-  50% {left: -50vw;}
-  60% {left: -40vw; }
-  70% {left: -30vw; }
-  80% {left: -20vw; }
-  90% {left: -10vw; }
+  0%   {left: 100vw;}
+  10% {left: 90vw; }
+  20% {left: 80vw; }
+  30% {left: 70vw; }
+  40% {left: 60vw; }
+  50% {left: 50vw;}
+  60% {left: 40vw; }
+  70% {left: 30vw; }
+  80% {left: 20vw; }
+  90% {left: 10vw; }
   100% {left: 0vw; }
 }
-
-.tab-panels{
-  display: flex;
-  flex-direction: row;
-  min-width: 200vw;
-  max-width: 200vw;
-  min-height: 100vh;
-  max-height: 100vh;
-  position: absolute;
-  left: 0vw;
-  animation-duration: .3s;
-
-  &.show {
-    animation-name: slideinTab;
-    left: -100vw;
-  }
-
-  &.hide{
-    animation-name: slideoutTab;
-    left: 0vw;
-  }
+@keyframes slideoutTab {
+  0%   {left: 0vw;}
+  10% {left: 10vw; }
+  20% {left: 20vw; }
+  30% {left: 30vw; }
+  40% {left: 40vw; }
+  50% {left: 50vw;}
+  60% {left: 60vw; }
+  70% {left: 70vw; }
+  80% {left: 80vw; }
+  90% {left: 90vw; }
+  100% {left: 100vw; }
 }
+
 .menu-content, .tab-content{
   width: 100%;
   height: 100%;  
-  min-width: 100vw;
-  max-width: 100vw;
-  max-height: 100vh;
-  min-height: 100vh;
+  position: absolute;
+  animation-duration: .3s;
+  z-index: 2;
+}
+.menu-content{
+  left: 0vw;
 }
 .tab-content {
-  background-color: #212121;
+  left: 100vw;   
+  background-color: #212121e8;
   border: 1px solid black;
 
   .tab-header{
@@ -231,12 +213,7 @@ input#toggle.expanded ~ #show-menu {
     padding: 10px;
     width: 100vw;
     min-width: 100vw;
-    max-width: 100vw;
-    max-height: 100vh;
-    
-    hr{     // This shouldnt be necessary!
-     min-width: calc(100vw - 20px); 
-    }
+
     .back-btn{
       float: left;
       margin-top: 9px;
@@ -256,6 +233,16 @@ input#toggle.expanded ~ #show-menu {
     font-size: large;
     padding: 2rem;
     width: 100%;
+  }
+
+  &.show {
+    animation-name: slideinTab;
+    left: 0vw;
+  }
+
+  &.hide{
+    animation-name: slideoutTab;
+    left: 100vw
   }
 }
 

@@ -1,100 +1,98 @@
-<div class="tab-panels" [class.show]="activeTab" [class.hide]="menuTouched && !activeTab">
-    <div class="menu-content">
-        <div class="menu">
-            <input type="checkbox" id="toggle" [class.expanded]="menuExpanded" />
-            <label id="show-menu" class="menu-items" for="toggle">
-                <div class="btn" (click)="toggleMenu()">
-                    <i class="material-icons md-36 toggleBtn menuBtn">menu</i>
-                    <i class="material-icons md-36 toggleBtn closeBtn">close</i>
-                </div>
-        
-                <ng-container *ngFor="let item of menuItems, index as i">
-                    <div class="btn" [class.selected]="item.selected" (click)="selectMenuItem(item, i, $event)">
-                        <!-- <i class="material-icons md-36">celebration</i> -->
-                        <img class="icon" src="{{item.imageSrc}}">
-        
-                        <div class="header-container" [class.toggled]="item.selected">
-                            <div class="header-inner">
-                                {{item.title}}
-                            </div>
-                        </div>
-        
-                        <div class="expand-btn" [class.toggled]="item.selected" (click)="toggleTab(i, true)">
-                            <i class="material-icons md-48">chevron_right</i>
+<div class="menu-content">
+    <div class="menu">
+        <input type="checkbox" id="toggle" [class.expanded]="menuExpanded" />
+        <label id="show-menu" class="menu-items" for="toggle">
+            <div class="btn" (click)="toggleMenu()">
+                <i class="material-icons md-36 toggleBtn menuBtn">menu</i>
+                <i class="material-icons md-36 toggleBtn closeBtn">close</i>
+            </div>
+    
+            <ng-container *ngFor="let item of menuItems, index as i">
+                <div class="btn" [class.selected]="item.selected" (click)="selectMenuItem(item, i, $event)">
+                    <!-- <i class="material-icons md-36">celebration</i> -->
+                    <img class="icon" src="{{item.imageSrc}}">
+    
+                    <div class="header-container" [class.toggled]="item.selected">
+                        <div class="header-inner">
+                            {{item.title}}
                         </div>
                     </div>
-                </ng-container>
-                
-                <!-- <div class="btn">
-                    <i class="material-icons md-36">settings</i>
-                </div> -->
-                <!-- <div class="btn">
-                    <i class="material-icons md-36">phone</i>
-                </div>
-                <div class="btn">
-                    <i class="material-icons md-36">cloud</i>
-                </div>
-                <div class="btn">
-                    <i class="material-icons md-36">videocam</i>
-                </div> -->
-        
-                <!-- Scroll Area -->
-                <!-- <div class="scroll-area" (scroll)="onScroll($event)">
-                    <div class="space"></div>
-                </div> -->
-            </label>
-        </div>
-    </div>
-    <div class="tab-content tab-shadow">
-        <div class="tab-header tab-shadow">
-            <a class="badge badge-pill badge-dark back-btn" title="Back" (click)="toggleTab(selectedItemIndex, false)">
-                <img class="icon" src="/assets/icons/back.svg">
-            </a>
-            <span class="badge badge-pill badge-secondary">{{menuItems[selectedItemIndex]?.description}}</span>
-            <hr />
-        </div>
-        <div class="tab-inner" [ngSwitch]="selectedItemIndex">
-
-            <ng-container *ngSwitchCase="0">
-                <swiper
-                    [effect]="'coverflow'"
-                    [grabCursor]="true"
-                    [centeredSlides]="true"
-                    [slidesPerView]="'auto'"
-                    [coverflowEffect]="{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true
-                    }"
-                    [pagination]="true"
-                    class="mySwiper"
-                >
-                <ng-template swiperSlide>
-                    <div class="slider-content">
-                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+    
+                    <div class="expand-btn" [class.toggled]="item.selected" (click)="toggleTab(i, true)">
+                        <i class="material-icons md-48">chevron_right</i>
                     </div>
-                </ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-2.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-3.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-4.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-5.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-6.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-7.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-8.jpg" /></ng-template
-                    ><ng-template swiperSlide
-                    ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-9.jpg"
-                    /></ng-template>
-                </swiper>
+                </div>
             </ng-container>
-        </div>
+            
+            <!-- <div class="btn">
+                <i class="material-icons md-36">settings</i>
+            </div> -->
+            <!-- <div class="btn">
+                <i class="material-icons md-36">phone</i>
+            </div>
+            <div class="btn">
+                <i class="material-icons md-36">cloud</i>
+            </div>
+            <div class="btn">
+                <i class="material-icons md-36">videocam</i>
+            </div> -->
+    
+            <!-- Scroll Area -->
+            <!-- <div class="scroll-area" (scroll)="onScroll($event)">
+                <div class="space"></div>
+            </div> -->
+        </label>
+    </div>
+</div>
+<div class="tab-content tab-shadow" [class.show]="activeTab" [class.hide]="menuTouched && !activeTab">
+    <div class="tab-header tab-shadow">
+        <a class="badge badge-pill badge-dark back-btn" title="Back" (click)="toggleTab(selectedItemIndex, false)">
+            <img class="icon" src="/assets/icons/back.svg">
+        </a>
+        <span class="badge badge-pill badge-secondary">{{menuItems[selectedItemIndex]?.description}}</span>
+        <hr />
+    </div>
+    <div class="tab-inner" [ngSwitch]="selectedItemIndex">
+
+        <ng-container *ngSwitchCase="0">
+            <swiper
+                [effect]="'coverflow'"
+                [grabCursor]="true"
+                [centeredSlides]="true"
+                [slidesPerView]="'auto'"
+                [coverflowEffect]="{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true
+                }"
+                [pagination]="true"
+                class="mySwiper"
+            >
+            <ng-template swiperSlide>
+                <div class="slider-content">
+                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                </div>
+            </ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-2.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-3.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-4.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-5.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-6.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-7.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-8.jpg" /></ng-template
+                ><ng-template swiperSlide
+                ><img class="slide-content" src="https://swiperjs.com/demos/images/nature-9.jpg"
+                /></ng-template>
+            </swiper>
+        </ng-container>
     </div>
 </div>
